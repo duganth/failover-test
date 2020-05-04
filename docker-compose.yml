@@ -39,25 +39,17 @@ services:
       - $PWD/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
   iperf-tcp-dl:
     build: .
-    environment:
-      - "EXTERNAL_IP=${EXTERNAL_IP}"
-    command: -t 13.48.212.162 -p 5201 -d 60 -g 192.168.15.27 -x dl_tcp -r
+    command: -t 13.48.212.162 -p 5201 -d 60 -g graphite -x dl_tcp -r
     restart: always
   iperf-tcp-ul:
     build: .
-    environment:
-      - "EXTERNAL_IP=${EXTERNAL_IP}"
     restart: always
-    command: -t 13.48.212.162 -p 5202 -d 60 -g 192.168.15.27 -x ul_tcp 
+    command: -t 13.48.212.162 -p 5202 -d 60 -g graphite -x ul_tcp 
   iperf-udp-dl:
     build: .
-    environment:
-      - "EXTERNAL_IP=${EXTERNAL_IP}"
     restart: always
-    command: -t 13.48.212.162 -p 5203 -d 60 -g 192.168.15.27 -x dl_udp -u -r
+    command: -t 13.48.212.162 -p 5203 -d 60 -g graphite -x dl_udp -u -r
   iperf-udp-ul:
     build: .
-    environment:
-      - "EXTERNAL_IP=${EXTERNAL_IP}"
     restart: always
-    command: -t 13.48.212.162 -p 5204 -d 60 -g 192.168.15.27 -x ul_udp  -u
+    command: -t 13.48.212.162 -p 5204 -d 60 -g graphite -x ul_udp  -u
