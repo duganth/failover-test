@@ -24,6 +24,7 @@ def perform_test(duration, target_hostname, target_port, protocol, reverse):
         client.server_hostname = target_hostname
         client.reverse = reverse
         client.blksize = 1400
+        client.bandwith = 100000000
         client.protocol = protocol
         client.port = int(target_port)
         print(reverse)
