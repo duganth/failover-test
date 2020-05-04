@@ -1,0 +1,63 @@
+version: "3"
+volumes:
+  grafana:
+  prometheus:
+
+services:
+  grafana:
+    image: grafana/grafana 
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+    
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - prometheus:/etc/prometheus/
+      - $PWD/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+
+  blackbox:
+    image: prom/blackbox-exporter:master
+    volumes:
+      - $PWD:/config
+    command: --config.file=/config/blackbox.yml
+    ports:
+      - 9115:9115
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    ports:
+      - 9080:80
+      - 2003-2004:2003-2004
+      - 2023-2024:2023-2024
+      - 8125:8125/udp
+      - 8126:8126
+    volumes:
+      - $PWD/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
+  iperf-tcp-dl:
+    build: .
+    environment:
+      - "EXTERNAL_IP=${EXTERNAL_IP}"
+    command: -t 13.48.212.162 -p 5201 -d 60 -g 192.168.15.27 -x dl_tcp -r
+    restart: always
+  iperf-tcp-ul:
+    build: .
+    environment:
+      - "EXTERNAL_IP=${EXTERNAL_IP}"
+    restart: always
+    command: -t 13.48.212.162 -p 5202 -d 60 -g 192.168.15.27 -x ul_tcp 
+  iperf-udp-dl:
+    build: .
+    environment:
+      - "EXTERNAL_IP=${EXTERNAL_IP}"
+    restart: always
+    command: -t 13.48.212.162 -p 5203 -d 60 -g 192.168.15.27 -x dl_udp -u -r
+  iperf-udp-ul:
+    build: .
+    environment:
+      - "EXTERNAL_IP=${EXTERNAL_IP}"
+    restart: always
+    command: -t 13.48.212.162 -p 5204 -d 60 -g 192.168.15.27 -x ul_udp  -u
