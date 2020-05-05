@@ -11,7 +11,6 @@ scrape_configs:
       - targets:
         - http://prometheus.io
         - http://google.com
-        - http://microsoft.com
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

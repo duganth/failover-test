@@ -37,19 +37,15 @@ services:
       - 8126:8126
     volumes:
       - $PWD/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
+
+  http-dl:
+    build: ./dl_test/.
+    command: -g graphite -x docker_dl 
+    volumes:
+      - $PWD:/app/
+    restart: always
+
   iperf-tcp-dl:
     build: .
     command: -t 13.48.212.162 -p 5201 -d 60 -g graphite -x dl_tcp -r
     restart: always
-  iperf-tcp-ul:
-    build: .
-    restart: always
-    command: -t 13.48.212.162 -p 5202 -d 60 -g graphite -x ul_tcp 
-  iperf-udp-dl:
-    build: .
-    restart: always
-    command: -t 13.48.212.162 -p 5203 -d 60 -g graphite -x dl_udp -u -r
-  iperf-udp-ul:
-    build: .
-    restart: always
-    command: -t 13.48.212.162 -p 5204 -d 60 -g graphite -x ul_udp  -u
