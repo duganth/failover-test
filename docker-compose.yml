@@ -15,14 +15,14 @@ services:
     image: prom/prometheus
     volumes:
       - prometheus:/etc/prometheus/
-      - $PWD/prometheus.yml:/etc/prometheus/prometheus.yml
+      - $PWD/configs/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - 9090:9090
 
   blackbox:
     image: prom/blackbox-exporter:master
     volumes:
-      - $PWD:/config
+      - $PWD/configs/:/config
     command: --config.file=/config/blackbox.yml
     ports:
       - 9115:9115
@@ -36,16 +36,14 @@ services:
       - 8125:8125/udp
       - 8126:8126
     volumes:
-      - $PWD/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
+      - $PWD/configs/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
 
   http-dl:
-    build: ./dl_test/.
+    build: ./http_dl_test/.
     command: -g graphite -x docker_dl 
-    volumes:
-      - $PWD:/app/
     restart: always
 
   iperf-tcp-dl:
-    build: .
-    command: -t 13.48.212.162 -p 5201 -d 60 -g graphite -x dl_tcp -r
+    build: ./iperf_test/.
+    command: -t 13.48.212.162 -p 5201 -d 60 -g graphite -x dl_tcp
     restart: always

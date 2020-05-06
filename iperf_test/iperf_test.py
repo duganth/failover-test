@@ -22,7 +22,6 @@ def perform_test(duration, target_hostname, target_port, protocol, reverse):
         client = iperf3.Client()
         client.duration = int(duration)
         client.server_hostname = target_hostname
-        client.reverse = reverse
         client.blksize = 1400
         client.bandwith = 1000000
         client.protocol = protocol
