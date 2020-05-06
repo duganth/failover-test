@@ -9,6 +9,7 @@ verify_ssl = true
 iperf3 = "*"
 graphyte = "*"
 requests = "*"
+pythonping = "*"
 
 [requires]
 python_version = "3.7"
