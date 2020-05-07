@@ -1,6 +1,7 @@
 import requests
 import time
 import graphyte
+import os
 from optparse import OptionParser
 
 
@@ -18,6 +19,8 @@ def parse_options():
 
 def main():
     (options, args) = parse_options()
+    os.system('ip link set eth0 qlen 1000')
+    os.system('tc qdisc add dev eth0 root tbf rate 1024kbit latency 50ms burst 1540')
     link = options.url
     file_name = "tmp"
     graphyte.init(options.graphite_host,
@@ -37,6 +40,7 @@ def main():
                         graphyte.send('bps', 1, time.time()//1)
                         print(f'{chunks*4096}bps at {time.time()}')
                         next_perf = int(time.time()//1)
+                        chunks = 0
                     chunks += 1
                     f.write(data)
     time.sleep(1)

@@ -11,6 +11,22 @@ services:
     volumes:
       - grafana:/var/lib/grafana
     
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - prometheus:/etc/prometheus/
+      - $PWD/configs/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+
+  blackbox:
+    image: prom/blackbox-exporter:master
+    volumes:
+      - $PWD/configs/:/config
+    command: --config.file=/config/blackbox.yml
+    ports:
+      - 9115:9115
+
   graphite:
     image: graphiteapp/graphite-statsd
     ports:
@@ -21,18 +37,6 @@ services:
       - 8126:8126
     volumes:
       - $PWD/configs/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
-
-  http-requests:
-    build: ./http_request_test/.
-    restart: always
-    cap_add:
-      - NET_ADMIN
-
-  ping:
-    build: ./ping_test/.
-    restart: always
-    cap_add:
-      - NET_ADMIN
 
   http-dl:
     build: ./http_dl_test/.

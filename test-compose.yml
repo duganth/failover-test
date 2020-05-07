@@ -1,0 +1,26 @@
+version: "3"
+
+  http-requests:
+    build: ./http_request_test/.
+    restart: always
+    cap_add:
+      - NET_ADMIN
+
+  ping:
+    build: ./ping_test/.
+    restart: always
+    cap_add:
+      - NET_ADMIN
+
+  http-dl:
+    build: ./http_dl_test/.
+    command: -g graphite -x docker_dl 
+    restart: always
+    cap_add:
+      - NET_ADMIN
+
+  iperf-tcp-dl:
+    build: ./iperf_test_reader/.
+    restart: always
+    cap_add:
+      - NET_ADMIN
