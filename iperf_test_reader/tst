@@ -777,4 +777,71 @@ EXITConnecting to host 13.48.212.162, port 5201
 [  6]   0.00-40.34  sec  11.5 MBytes   293 KBytes/sec                  sender
 [  6]   0.00-40.34  sec  0.00 Bytes  0.00 KBytes/sec                  receiver
 iperf3: interrupt - the client has terminated
+EXITiperf3: error - unable to connect to server: Connection refused
+EXITConnecting to host 127.0.0.1, port 5201
+[  6] local 127.0.0.1 port 61265 connected to 127.0.0.1 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-1.00   sec  32.1 MBytes  32879 KBytes/sec                  
+[  6]   1.00-2.00   sec  29.2 MBytes  29858 KBytes/sec                  
+[  6]   2.00-3.00   sec  30.7 MBytes  31389 KBytes/sec                  
+[  6]   3.00-4.00   sec  33.1 MBytes  33940 KBytes/sec                  
+[  6]   4.00-5.00   sec  30.9 MBytes  31642 KBytes/sec                  
+[  6]   5.00-6.00   sec  31.4 MBytes  32154 KBytes/sec                  
+[  6]   6.00-7.00   sec  30.7 MBytes  31384 KBytes/sec                  
+[  6]   7.00-8.00   sec  29.7 MBytes  30373 KBytes/sec                  
+[  6]   8.00-9.00   sec  30.9 MBytes  31631 KBytes/sec                  
+[  6]   9.00-10.00  sec  30.9 MBytes  31656 KBytes/sec                  
+[  6]  10.00-11.00  sec  30.4 MBytes  31120 KBytes/sec                  
+[  6]  11.00-12.00  sec  31.9 MBytes  32526 KBytes/sec                  
+[  6]  12.00-13.00  sec  29.7 MBytes  30480 KBytes/sec                  
+[  6]  13.00-13.34  sec  9.22 MBytes  28058 KBytes/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-13.34  sec   411 MBytes  31528 KBytes/sec                  sender
+[  6]   0.00-13.34  sec  0.00 Bytes  0.00 KBytes/sec                  receiver
+iperf3: interrupt - the client has terminated
+EXITConnecting to host 127.0.0.1, port 5201
+[  6] local 127.0.0.1 port 61269 connected to 127.0.0.1 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-1.00   sec  32.1 MBytes  32882 KBytes/sec                  
+[  6]   1.00-2.00   sec  28.9 MBytes  29597 KBytes/sec                  
+[  6]   2.00-3.00   sec  33.4 MBytes  34201 KBytes/sec                  
+[  6]   3.00-4.00   sec  31.9 MBytes  32664 KBytes/sec                  
+[  6]   4.00-5.00   sec  29.4 MBytes  30120 KBytes/sec                  
+[  6]   5.00-6.00   sec  27.4 MBytes  28091 KBytes/sec                  
+[  6]   6.00-6.60   sec  19.7 MBytes  33508 KBytes/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-6.60   sec   203 MBytes  31464 KBytes/sec                  sender
+[  6]   0.00-6.60   sec  0.00 Bytes  0.00 KBytes/sec                  receiver
+iperf3: interrupt - the client has terminated
+EXITConnecting to host 127.0.0.1, port 5201
+[  6] local 127.0.0.1 port 61271 connected to 127.0.0.1 port 5201
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-1.00   sec  33.4 MBytes  34165 KBytes/sec                  
+[  6]   1.00-2.00   sec  31.4 MBytes  32151 KBytes/sec                  
+[  6]   2.00-3.00   sec  31.2 MBytes  31899 KBytes/sec                  
+[  6]   3.00-4.00   sec  28.7 MBytes  29409 KBytes/sec                  
+[  6]   4.00-5.00   sec  28.9 MBytes  29553 KBytes/sec                  
+[  6]   5.00-6.00   sec  29.9 MBytes  30655 KBytes/sec                  
+[  6]   6.00-7.00   sec  28.4 MBytes  29080 KBytes/sec                  
+[  6]   7.00-8.00   sec  31.6 MBytes  32442 KBytes/sec                  
+[  6]   8.00-9.00   sec  28.2 MBytes  28796 KBytes/sec                  
+[  6]   9.00-10.00  sec  26.7 MBytes  27342 KBytes/sec                  
+[  6]  10.00-11.00  sec  29.9 MBytes  30623 KBytes/sec                  
+[  6]  11.00-12.00  sec  29.7 MBytes  30352 KBytes/sec                  
+[  6]  12.00-13.00  sec  30.4 MBytes  31140 KBytes/sec                  
+[  6]  13.00-14.00  sec  30.4 MBytes  31142 KBytes/sec                  
+[  6]  14.00-15.00  sec  28.2 MBytes  28836 KBytes/sec                  
+[  6]  15.00-16.00  sec  27.7 MBytes  28288 KBytes/sec                  
+[  6]  16.00-17.00  sec  28.2 MBytes  28851 KBytes/sec                  
+[  6]  17.00-18.00  sec  27.2 MBytes  27827 KBytes/sec                  
+[  6]  18.00-19.00  sec  27.4 MBytes  28082 KBytes/sec                  
+[  6]  19.00-20.00  sec  28.7 MBytes  29307 KBytes/sec                  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  6]   0.00-20.00  sec   586 MBytes  29997 KBytes/sec                  sender
+[  6]   0.00-20.06  sec   585 MBytes  29863 KBytes/sec                  receiver
+
+iperf Done.
 EXIT

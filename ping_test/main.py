@@ -26,8 +26,8 @@ def schedule_pings(duration, target, graphite):
 
 
 def main():
-    targets = ['8.8.8.8', '192.168.1.1']
-    duration = 60
+    targets = ['8.8.8.8', '8.8.4.4']
+    duration = 480
     graphite = '192.168.15.27'
     for ip in targets:
         p = multiprocessing.Process(target=schedule_pings,

@@ -41,9 +41,8 @@ services:
     cap_add:
       - NET_ADMIN
 
-  iperf-tcp-dl:
-    build: ./iperf_test/.
-    command: -t 13.48.212.162 -p 5201 -d 60 -g graphite -x dl_tcp
+  iperf-reader:
+    build: ./iperf_test_reader/.
     restart: always
     cap_add:
       - NET_ADMIN

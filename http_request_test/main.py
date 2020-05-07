@@ -26,8 +26,8 @@ def schedule_requests(duration, target, graphite):
 
 
 def main():
-    targets = ['google.com', 'plor.io']
-    duration = 60
+    targets = ['example.com', 'plor.io']
+    duration = 480
     graphite = '192.168.15.27'
     for ip in targets:
         p = multiprocessing.Process(target=schedule_requests,

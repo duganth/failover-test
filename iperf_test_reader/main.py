@@ -19,8 +19,10 @@ def parse_line(line):
     if re.search('\[.*\d\]', line):
         elements = line.split(' ')
         index = elements.index('KBytes/sec')
-        result = float(elements[index-1])
-        return (0, 1)[result > 0]
+        result = (0, 1)[float(elements[index-1]) > 0]
+        interval = re.search('\d+.\d+-\d+.\d+', line)
+        interval = int(interval[0].split('.')[0])
+        return(result, interval)
     return None
 
 
@@ -31,24 +33,26 @@ def run_iperf(target, file_name, duration=10, port=5201):
 
 
 def read_iperf(file_name, graphite, target):
+    start_time = int(time.time()) 
     for line in tailer.follow(open(file_name)):
         result = parse_line(line)
         if result is not None:
-            print(result, int(time.time()))
-            send_to_graphite(graphite, str(target), result, int(time.time()))
+            print(result)
+            send_to_graphite(graphite, str(target), result[0],
+                             start_time+result[1])
         print(line)
         if line == 'EXIT':
             break
 
 
 def main():
-    target = '13.48.212.162'
+    target = '127.0.0.1'
     graphite = '192.168.15.27'
-    duration = 20
+    duration = 480
     file_name = 'tst'
     Path(file_name).touch()
     os.system('ip link set eth0 qlen 1000')
-    os.system('tc qdisc add dev eth0 root tbf rate 1024kbit latency 50ms burst 1540')
+    os.system('tc qdisc add dev eth0 root tbf rate 4024kbit latency 50ms burst 4540')
     p = multiprocessing.Process(target=run_iperf, args=(target,
                                                         file_name, duration, ))
     c = multiprocessing.Process(target=read_iperf, args=(file_name, graphite,
