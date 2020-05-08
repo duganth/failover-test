@@ -1,0 +1,2 @@
+#!/bin/bash
+aws ec2 describe-route-tables --route-table-id $RT | jq '.RouteTables[0].Routes[]'

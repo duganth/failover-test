@@ -1,0 +1,1 @@
+aws ec2 replace-route --route-table-id $RT --destination-cidr-block 0.0.0.0/0 --network-interface-id $ENI

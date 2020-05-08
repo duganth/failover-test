@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Current firewall loaded in environment is $FW."
+state=$(curl -H "X-PAN-KEY: $API" --silent -k "https://$FW/api/?type=op&cmd=<show><high-availability><state></state></high-availability></show>" | xmllint --xpath "/response/result/group/local-info/state/text()" -)
+echo "$FW state is ${state}"

@@ -1,0 +1,7 @@
+#!/bin/bash
+time=$(date)
+echo "Failing over at ${time}"
+suspend=$(curl -H "X-PAN-KEY: $API" --silent -k "https://$FW/api/?type=op&cmd=<request><high-availability><state><suspend></suspend></state></high-availability></request>" | xmllint --xpath "/response/result/text()" -)
+functional=$(curl -H "X-PAN-KEY: $API" --silent -k "https://$FW/api/?type=op&cmd=<request><high-availability><state><functional></functional></state></high-availability></request>" | xmllint --xpath "/response/result/text()" -)
+echo "Suspend operation result: ${suspend}"
+echo "Functional operation result: ${functional}"
